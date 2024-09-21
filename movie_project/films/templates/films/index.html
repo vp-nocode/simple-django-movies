@@ -4,6 +4,18 @@
     <title>Movie Catalogue</title>
 {% endblock %}
 
-{% block content%}
-    <h1>Movie Catalogue</h1>
+{% block content %}
+<h2>Movie Catalogue</h2>
+	{% if movies %}
+		{% for movie in movies %}
+            <h5>{{ movie.title }}</h5>
+            <p>director: {{ movie.director }} </p>
+            <p>description: {{ movie.description }} </p>
+            <p>year of production: {{ movie.prod_date }} </p>
+            <p>budget: {{ movie.budget }} </p>
+		{% endfor %}
+	{% else %}
+		<h4>Catalogue is empty</h4>
+	{% endif %}
+
 {% endblock %}
