@@ -1,0 +1,14 @@
+{% extends 'films/layoute.html' %}
+
+{% block title %}
+<title>Add Review</title>
+{% endblock %}
+
+{% block content %}
+<h2>Add Review for {{ movie.title }}</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save review</button>
+</form>
+{% endblock %}

@@ -12,10 +12,52 @@
             <p>director: {{ movie.director }} </p>
             <p>description: {{ movie.description }} </p>
             <p>year of production: {{ movie.prod_date }} </p>
-            <p>budget: {{ movie.budget }} </p>
+            <p>budget: {{ movie.budget }} million $</p>
+
+            <button onclick="toggleReviews({{ movie.id }})">View reviews</button>
+            <button onclick="toggleAddReview({{ movie.id }})">Add review</button>
+
+            <div id="reviews-{{ movie.id }}" style="display: none;">
+                <button onclick="toggleReviews({{ movie.id }})">Hide reviews</button>
+
+                {% for review in movie.reviews.all %}
+                    <p><strong>{{ review.reviewer_name }}</strong>: {{ review.review_text }} (Rating: {{ review.rating }})</p>
+                {% empty %}
+                    <p>No reviews yet.</p>
+                {% endfor %}
+            </div>
+
+            <div id="add-review-{{ movie.id }}" style="display: none;">
+                <form action="{% url 'add_review' movie.id %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Save review</button>
+                </form>
+            </div>
+
 		{% endfor %}
 	{% else %}
 		<h4>Catalogue is empty</h4>
 	{% endif %}
+
+<script>
+function toggleReviews(movieId) {
+    var reviewsDiv = document.getElementById('reviews-' + movieId);
+    if (reviewsDiv.style.display === 'none') {
+        reviewsDiv.style.display = 'block';
+    } else {
+        reviewsDiv.style.display = 'none';
+    }
+}
+
+function toggleAddReview(movieId) {
+    var addReviewDiv = document.getElementById('add-review-' + movieId);
+    if (addReviewDiv.style.display === 'none') {
+        addReviewDiv.style.display = 'block';
+    } else {
+        addReviewDiv.style.display = 'none';
+    }
+}
+</script>
 
 {% endblock %}

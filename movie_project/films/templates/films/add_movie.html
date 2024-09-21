@@ -6,4 +6,26 @@
 
 {% block content%}
     <h1>Add movie in catalogue</h1>
+    <div>
+    <h4>Form for adding movie</h4>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            {{ form.title }}
+        </div>
+        <div>
+            {{ form.director }}
+        </div>
+        <div>
+            {{ form.description }}
+        </div>
+        <div>
+            {{ form.budget }}
+        </div>
+        <div>
+            {{ form.prod_date }}
+        </div>
+        <button type="submit">Add news movie</button>
+    </form>
+    </div>
 {% endblock %}

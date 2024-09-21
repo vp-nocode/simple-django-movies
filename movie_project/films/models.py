@@ -5,7 +5,7 @@ class Movie(models.Model):
 	description = models.TextField('Description of the movie')
 	director = models.CharField('Director', max_length=200)
 	prod_date = models.PositiveSmallIntegerField('Year of production')
-	budget = models.PositiveIntegerField("Movie budget, $")
+	budget = models.PositiveIntegerField("Movie budget, million $")
 
 	class Meta:
 		verbose_name = 'Movie'
