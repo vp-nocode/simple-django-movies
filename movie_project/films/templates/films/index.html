@@ -19,7 +19,7 @@
 
                         <button class="btn btn-primary" onclick="toggleReviews({{ movie.id }}, true)" id="view-btn-{{ movie.id }}">View reviews</button>
                         <button class="btn btn-secondary" onclick="toggleReviews({{ movie.id }}, false)" id="hide-btn-{{ movie.id }}" style="display: none;">Hide reviews</button>
-                        <button class="btn btn-primary" onclick="window.location.href='{% url 'add_review' movie.id %}'">Add reviews</button>
+                        <button class="btn btn-primary" onclick="window.location.href='{% url 'add_review' movie.id %}'">Add review</button>
                         <div id="reviews-{{ movie.id }}" style="display: none;" class="mt-3">
                             <h5>Reviews</h5>
                             <div class="row">
